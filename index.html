@@ -18,7 +18,8 @@
     <link rel="apple-touch-icon" href="https://www.shutterstock.com/image-illustration/neon-puzzle-icon-game-glowing-260nw-2648373673.jpg">
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
+    <!-- particles.js CDN -->
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <style>
         :root {
             --bg-dark: #121212;
@@ -125,15 +126,34 @@
             position: absolute;
             top: 0; left: 0;
             width: 100%; height: 100%;
-            background: radial-gradient(circle at center, rgba(54, 128, 196, 0.4) 0%, rgba(47, 43, 49, 0.8) 100%);
+            background: radial-gradient(circle at center, rgba(174, 110, 202, 0.4) 0%, rgba(18, 16, 18, 0.8) 100%);
             z-index: -1;
         }
 
-        .hero h1 {
-            font-size: 5rem;
-            font-weight: 800;
-            margin-bottom: 30px;
-        }
+.hero h1 {
+    font-size: 5rem; /* Keep size or change to 6rem if you want bigger */
+    font-weight: 800;
+    margin-bottom: 30px;
+    background: linear-gradient(90deg, #ffffff, #efe9f3, #e4e1e9); /* Purple → Cyan → Purple glow */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    background-size: 200% 200%;
+    animation: gradient-flow 8s ease infinite;
+    text-shadow: 0 0 30px rgba(239, 235, 244, 0.6); /* Stronger neural glow */
+}
+
+@keyframes gradient-flow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.hero h1 {
+  /* ... previous styles ... */
+  background-size: 200% 200%;
+  animation: gradient-shift 2s ease infinite;
+}
 
         .hero p {
             font-size: 1.4rem;
@@ -293,9 +313,31 @@
             .cta-buttons { flex-direction: column; }
             .project-grid { grid-template-columns: 1fr; }
         }
+        #particles-js {
+        position: fixed; /* Changed from absolute to fixed */
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: -1; /* Behind all content */
+        pointer-events: none; /* Allows clicks to pass through to buttons/links */
+        }
+        #about, #skills, #experience, #projects, footer {
+        position: relative;
+        }
+
+        #about::before, #skills::before, #experience::before, #projects::before, footer::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: rgba(18, 18, 18, 0.4); /* Dark overlay to tone down particles in sections */
+        z-index: -1;
+        }
     </style>
 </head>
 <body>
+    <div id="particles-js"></div>
     <header>
         <div class="small-logo">anasrealm.</div>
         <nav>
@@ -335,7 +377,8 @@
     <section id="about">
         <h2>About Me</h2>
         <div class="section-content">
-            <p>I'm a B.Tech Computer Science student at KL Deemed to be University (2023-2027) with a CGPA of 8.81/10. Specializing in Artificial Intelligence for Visual Intelligence.</p>
+            <p>I'm a B.Tech Computer Science student at KL Deemed to be University (2023-2027).</p>
+            <p>Specializing in Artificial Intelligence for Visual Intelligence.</p>
             <p>Interested in data science, analytics, full-stack development, and experimenting with deep learning models. Love building cool projects and having fun while learning.</p>
             <p>Interests: Music, Photo & Video Editing, Content Creation, Nature Photography</p>
         </div>
@@ -380,7 +423,7 @@
             <div class="project-card">
                 <h3>Weather Application</h3>
                 <p>Full-stack React + Spring Boot real-time weather app with responsive design and API integration.</p>
-                <a href="YOUR_WEATHER_APP_LINK_HERE" target="_blank">View Project →</a>
+                <a href="https://shaikanasbasha-55.github.io/weather-application/" target="_blank">View Project →</a>
             </div>
         </div>
     </section>
@@ -388,5 +431,66 @@
     <footer id="contact" style="text-align: center; padding: 60px; opacity: 0.8;">
         <p>© 2025 anasrealm • Built with passion & code • Contact: shaikanas9346@gmail.com</p>
     </footer>
+<script>
+particlesJS("particles-js", {
+  "particles": {
+    "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
+    "color": { "value": "#bb86fc" },
+    "shape": { "type": "circle" },
+    "opacity": { "value": 0.5, "random": true },
+    "size": { "value": 4, "random": true },
+    "line_linked": {
+      "enable": true,
+      "distance": 150,
+      "color": "#bb86fc",
+      "opacity": 0.4,
+      "width": 1
+    },
+    "move": {
+      "enable": true,
+      "speed": 4, /* Base movement speed */
+      "direction": "none",
+      "random": false,
+      "straight": false,
+      "out_mode": "out",
+      "attract": {
+        "enable": true,
+        "rotateX": 300, /* Lower = stronger horizontal pull */
+        "rotateY": 600  /* Lower = stronger vertical pull */
+      }
+    }
+  },
+  "interactivity": {
+    "detect_on": "window", /* Changed to "window" – fixes mouse detection issues! */
+    "events": {
+      "onhover": { "enable": true, "mode": "grab" },
+      "onclick": { "enable": true, "mode": "repulse" },
+      "resize": true
+    },
+    "modes": {
+      "grab": { "distance": 140, "line_linked": { "opacity": 1 } },
+      "repulse": { "distance": 200, "duration": 0.4 }
+    }
+  },
+  "retina_detect": true
+});
+</script>
+<script>
+  // Smooth scroll for the arrow button
+  document.querySelector('.scroll-btn').addEventListener('click', function() {
+    window.scrollBy({
+      top: window.innerHeight, /* Scrolls down one full screen */
+      behavior: 'smooth'
+    });
+  });
+
+  // Optional: Make it hover glow
+  document.querySelector('.scroll-btn').addEventListener('mouseenter', function() {
+    this.style.transform = 'scale(1.2)';
+  });
+  document.querySelector('.scroll-btn').addEventListener('mouseleave', function() {
+    this.style.transform = 'scale(1)';
+  });
+</script>
 </body>
 </html>
