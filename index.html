@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO: Title & Description for Google Search Results -->
+    <title>anasrealm - AI & Full-Stack Developer Portfolio</title>
+    <meta name="description" content="anasrealm: Portfolio of Shaik Anas Basha, B.Tech Computer Science student specializing in AI, data science, full-stack development, and deep learning. Explore innovative projects like ToeTuff Gang and TARK File Converter.">
+
+    <!-- Open Graph / Social Sharing Preview (Facebook, LinkedIn, etc.) -->
+    <meta property="og:title" content="anasrealm - AI & Full-Stack Developer Portfolio">
+    <meta property="og:description" content="anasrealm: Portfolio of Shaik Anas Basha, B.Tech Computer Science student specializing in AI, data science, full-stack development, and deep learning. Explore innovative projects.">
+    <meta property="og:type" content="website">
+    
+    <!-- Favicon (shows logo icon in browser tab & Google results instead of Vercel default) -->
+    <link rel="icon" href="https://www.shutterstock.com/image-illustration/neon-puzzle-icon-game-glowing-260nw-2648373673.jpg" type="image/jpeg">
+    <link rel="apple-touch-icon" href="https://www.shutterstock.com/image-illustration/neon-puzzle-icon-game-glowing-260nw-2648373673.jpg">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-dark: #121212;
+            --text-light: #f0f0f0;
+            --accent-purple: #bb86fc;
+            --text-secondary: #bbbbbb;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-light);
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Premium subtle dark gradient + noise texture background */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: linear-gradient(135deg, #1e1e1e 0%, #0f0f0f 100%);
+            opacity: 0.8;
+            z-index: -2;
+        }
+
+        body::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: url('https://www.shutterstock.com/image-illustration/monochrome-abstract-noise-black-white-600nw-2462689935.jpg') repeat;
+            opacity: 0.05;
+            z-index: -1;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 30px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .small-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-light);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 50px;
+            list-style: none;
+        }
+
+        nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--accent-purple);
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 50px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+            object-fit: cover;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: radial-gradient(circle at center, rgba(54, 128, 196, 0.4) 0%, rgba(47, 43, 49, 0.8) 100%);
+            z-index: -1;
+        }
+
+        .hero h1 {
+            font-size: 5rem;
+            font-weight: 800;
+            margin-bottom: 30px;
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            max-width: 600px;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            margin-bottom: 50px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            background: transparent;
+            border: 2px solid var(--accent-purple);
+            color: var(--accent-purple);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: var(--accent-purple);
+            color: var(--bg-dark);
+            transform: scale(1.05);
+        }
+
+        .btn-primary {
+            background: var(--accent-purple);
+            color: var(--bg-dark);
+        }
+
+        .btn-primary:hover {
+            background: transparent;
+            color: var(--accent-purple);
+        }
+
+        .scroll-btn {
+            position: absolute;
+            bottom: 50px;
+            left: 50px;
+            width: 60px;
+            height: 60px;
+            background: var(--text-light);
+            color: var(--bg-dark);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .scroll-btn:hover {
+            transform: scale(1.1);
+        }
+
+        /* Sections (unchanged) */
+        #about, #skills, #experience, #projects {
+            padding: 120px 50px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        #about h2, #skills h2, #experience h2, #projects h2 {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 80px;
+            color: var(--accent-purple);
+        }
+
+        .section-content {
+            background: rgba(30, 30, 30, 0.6);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 50px;
+            max-width: 1000px;
+            margin: 0 auto;
+            border: 1px solid rgba(187, 134, 252, 0.2);
+        }
+
+        .section-content ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .section-content li {
+            margin-bottom: 20px;
+            line-height: 1.6;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .section-content li::before {
+            content: '▹';
+            color: var(--accent-purple);
+            position: absolute;
+            left: 0;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 50px;
+        }
+
+        .project-card {
+            background: rgba(30, 30, 30, 0.6);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            transition: transform 0.4s ease;
+            border: 1px solid rgba(187, 134, 252, 0.2);
+        }
+
+        .project-card:hover {
+            transform: translateY(-15px);
+        }
+
+        .project-card h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--accent-purple);
+        }
+
+        .project-card p {
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .project-card a {
+            color: var(--accent-purple);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero h1 { font-size: 3.5rem; }
+            .hero p { font-size: 1.2rem; }
+            nav ul { gap: 30px; }
+        }
+
+        @media (max-width: 768px) {
+            header { padding: 20px; flex-direction: column; gap: 20px; }
+            .hero { padding: 0 30px; }
+            .hero h1 { font-size: 3rem; }
+            .scroll-btn { left: 30px; }
+            .cta-buttons { flex-direction: column; }
+            .project-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="small-logo">anasrealm.</div>
+        <nav>
+            <ul>
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="/anasrealm-resume.pdf" target="_blank" download>Resume</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" id="hero">
+        <!-- Video Background - Replace src with your own MP4 URL (upload to Vercel /public or any host) -->
+        <video class="hero-video" autoplay muted loop playsinline>
+            <source src="bg.mp4" type="video/mp4">
+            Your browser does not support the video tag. (Fallback to static image if needed)
+        </video>
+
+        <div class="hero-overlay"></div>
+
+        <h1>Shaik Anas Basha</h1>
+        <p>Hello there! I'm Anas, a passionate B.Tech Computer Science student specializing in AI, data science, full-stack development, and deep learning. Breathing life into ideas through code and innovation.</p>
+
+        <div class="cta-buttons">
+            <a href="#projects" class="btn btn-primary">View Projects</a>
+            <a href="\anasrealm-resume.pdf" target="_blank" download class="btn">Download Resume</a>
+        </div>
+
+        <div class="scroll-btn">→</div>
+    </section>
+
+    <!-- Rest of your sections (About, Skills, Experience, Projects) remain the same -->
+    <section id="about">
+        <h2>About Me</h2>
+        <div class="section-content">
+            <p>I'm a B.Tech Computer Science student at KL Deemed to be University (2023-2027) with a CGPA of 8.81/10. Specializing in Artificial Intelligence for Visual Intelligence.</p>
+            <p>Interested in data science, analytics, full-stack development, and experimenting with deep learning models. Love building cool projects and having fun while learning.</p>
+            <p>Interests: Music, Photo & Video Editing, Content Creation, Nature Photography</p>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2>Skills</h2>
+        <div class="section-content">
+            <ul>
+                <li>Programming Languages: C, Java, Python</li>
+                <li>Web Development / Full-Stack: HTML, CSS, JavaScript, React</li>
+                <li>Data Science & Analytics: Pandas, NumPy, Matplotlib, SQL</li>
+                <li>Machine Learning / Deep Learning: Scikit-Learn, TensorFlow, PyTorch, Keras</li>
+                <li>Tools / Others: Git, PyCharm, VS Code, Excel, Cisco Packet Tracer</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="experience">
+        <h2>Experience</h2>
+        <div class="section-content">
+            <ul>
+                <li>Cisco Internship – Networking (May 2024 – Jul 2024, Virtual): Learned networking protocols, configurations, troubleshooting, and enterprise setups.</li>
+                <li>Kodacy – AIML Internship (Aug 2025, 30 days, Virtual): Built AI/ML models, data preprocessing, feature engineering, and practical project experience.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2>Featured Projects</h2>
+        <div class="project-grid">
+            <div class="project-card">
+                <h3>ToeTuff Gang (GNG)</h3>
+                <p>Neon-powered online browser gaming platform with free arcade, racing, and puzzle games.</p>
+                <a href="https://toetuffgng.vercel.app/" target="_blank">Launch App →</a>
+            </div>
+            <div class="project-card">
+                <h3>TARK • Smart File Converter</h3>
+                <p>Intuitive drag-and-drop file conversion tool for seamless format switching.</p>
+                <a href="https://tark-converter-anas.vercel.app/" target="_blank">Open App →</a>
+            </div>
+            <div class="project-card">
+                <h3>Weather Application</h3>
+                <p>Full-stack React + Spring Boot real-time weather app with responsive design and API integration.</p>
+                <a href="YOUR_WEATHER_APP_LINK_HERE" target="_blank">View Project →</a>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact" style="text-align: center; padding: 60px; opacity: 0.8;">
+        <p>© 2025 anasrealm • Built with passion & code • Contact: shaikanas9346@gmail.com</p>
+    </footer>
+</body>
+</html>
