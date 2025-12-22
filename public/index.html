@@ -334,6 +334,40 @@
         background: rgba(18, 18, 18, 0.4); /* Dark overlay to tone down particles in sections */
         z-index: -1;
         }
+        .site-footer {
+  background: #000000;          /* dark professional navy */
+  color: #cbd5e1;
+  padding: 30px 15px;
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+}
+
+.footer-content {
+  max-width: 900px;
+  margin: auto;
+}
+
+.site-footer span {
+  color: #38bdf8;               /* accent color */
+  font-weight: 600;
+}
+
+.site-footer p {
+  margin: 6px 0;
+  font-size: 14px;
+  letter-spacing: 0.3px;
+}
+
+.site-footer a {
+  color: #38bdf8;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.site-footer a:hover {
+  text-decoration: underline;
+}
+
     </style>
 </head>
 <body>
@@ -428,9 +462,21 @@
         </div>
     </section>
 
-    <footer id="contact" style="text-align: center; padding: 60px; opacity: 0.8;">
-        <p>© 2025 anasrealm • Built with passion & code • Contact: shaikanas9346@gmail.com</p>
-    </footer>
+<footer class="site-footer" id="contact">
+  <div class="footer-content">
+    <p class="copyright">
+      © 2025 <span>anasrealm</span>. All rights reserved.
+    </p>
+    <p class="tagline">
+      Built with passion & clean code
+    </p>
+    <p class="contact">
+      Contact:
+      <a href="mailto:shaikanas9346@gmail.com">shaikanas9346@gmail.com</a>
+    </p>
+  </div>
+</footer>
+
 <script>
 particlesJS("particles-js", {
   "particles": {
