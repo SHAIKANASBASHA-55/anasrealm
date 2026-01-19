@@ -57,6 +57,20 @@
             opacity: 0.7;
             z-index: -2;
         }
+        /* Background Video */
+#bg-video {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translateX(-50%) translateY(-50%);
+    z-index: -3;           /* Very important → behind everything */
+    opacity: 0.5;
+    object-fit: cover;
+}
 
         /* Particles container */
         #particles-js {
@@ -294,7 +308,10 @@
     </style>
 </head>
 <body>
-
+<video autoplay muted loop playsinline id="bg-video">
+    <source src="bg2.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
 <div id="particles-js"></div>
 
 <header>
@@ -309,7 +326,7 @@
 </header>
 
 <section class="hero" id="hero" data-aos="fade-up">
-    <h1>Shaik Anas Basha</h1>
+    <h1>Anas</h1>
     <p>AI Enthusiast • Full-Stack Developer • Deep Learning Explorer<br/>Turning ideas into interactive, performant, and beautiful digital experiences.</p>
 
     <div style="display:flex; gap:1.5rem;">
@@ -342,7 +359,7 @@
 <section id="projects" data-aos="fade-up" data-aos-delay="200">
     <h2>Featured Projects</h2>
     <div class="projects-grid">
-        <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="project-card" data-aos="fade-up" data-aos-delay="100" >
             <h3>ToeTuff Gang (GNG)</h3>
             <p>Neon-powered online browser gaming platform with free arcade, racing, and puzzle games.</p>
             <div class="card-buttons">
@@ -371,7 +388,6 @@
     </div>
 
     <div style="text-align:center; margin-top:5rem;">
-        <p style="color:var(--text-sec); margin-bottom:1.5rem;">Want to see more?</p>
         <a href="#" class="btn btn-primary">View All Projects →</a>
     </div>
 </section>
@@ -388,7 +404,7 @@
 particlesJS("particles-js", {
     "particles": {
         "number": { "value": 60, "density": { "enable": true, "value_area": 900 } },
-        "color": { "value": "#bb86fc" },
+        "color": { "value": "#f0f0f0" },
         "shape": { "type": "circle" },
         "opacity": { "value": 0.45, "random": true },
         "size": { "value": 3.5, "random": true },
@@ -411,4 +427,4 @@ AOS.init({
 });
 </script>
 </body>
-</html>
+</html>  
