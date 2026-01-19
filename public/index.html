@@ -1,31 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- SEO: Title & Description for Google Search Results -->
-    <title>anasrealm - AI & Full-Stack Developer Portfolio</title>
-    <meta name="description" content="anasrealm: Portfolio of Shaik Anas Basha, B.Tech Computer Science student specializing in AI, data science, full-stack development, and deep learning. Explore innovative projects like ToeTuff Gang and TARK File Converter.">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>anasrealm • AI & Full-Stack Developer</title>
+    <meta name="description" content="Shaik Anas Basha - B.Tech CSE | AI, Deep Learning, Full-Stack Developer. Building innovative web experiences & tools."/>
 
-    <!-- Open Graph / Social Sharing Preview (Facebook, LinkedIn, etc.) -->
-    <meta property="og:title" content="anasrealm - AI & Full-Stack Developer Portfolio">
-    <meta property="og:description" content="anasrealm: Portfolio of Shaik Anas Basha, B.Tech Computer Science student specializing in AI, data science, full-stack development, and deep learning. Explore innovative projects.">
-    <meta property="og:type" content="website">
-    
-    <!-- Favicon (shows logo icon in browser tab & Google results instead of Vercel default) -->
-    <link rel="icon" href="https://www.shutterstock.com/image-illustration/neon-puzzle-icon-game-glowing-260nw-2648373673.jpg" type="image/jpeg">
-    <link rel="apple-touch-icon" href="https://www.shutterstock.com/image-illustration/neon-puzzle-icon-game-glowing-260nw-2648373673.jpg">
+    <!-- Open Graph -->
+    <meta property="og:title" content="anasrealm • AI & Full-Stack Developer"/>
+    <meta property="og:description" content="Passionate about AI, data science, full-stack development & deep learning. Explore my projects like ToeTuff Gang & TARK Converter."/>
+    <meta property="og:type" content="website"/>
 
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- particles.js CDN -->
-<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <!-- Favicon -->
+    <link rel="icon" href="https://www.shutterstock.com/image-illustration/neon-puzzle-icon-game-glowing-260nw-2648373673.jpg" type="image/jpeg"/>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+
+    <!-- Particles.js -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
+    <!-- AOS - Animate On Scroll -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
     <style>
         :root {
-            --bg-dark: #121212;
-            --text-light: #f0f0f0;
-            --accent-purple: #bb86fc;
-            --text-secondary: #bbbbbb;
+            --bg: #0d0d0d;
+            --dark: #121212;
+            --text: #f0f0f0;
+            --text-sec: #bbbbbb;
+            --accent: #bb86fc;
+            --accent-dark: #9f5ed7;
         }
 
         * {
@@ -36,471 +42,374 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            background: var(--bg-dark);
-            color: var(--text-light);
-            min-height: 100vh;
-            position: relative;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
             overflow-x: hidden;
         }
 
-        /* Premium subtle dark gradient + noise texture background */
+        /* Subtle background layers */
         body::before {
             content: '';
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: linear-gradient(135deg, #1e1e1e 0%, #0f0f0f 100%);
-            opacity: 0.8;
+            position: fixed;
+            inset: 0;
+            background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+            opacity: 0.7;
             z-index: -2;
         }
 
-        body::after {
-            content: '';
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: url('https://www.shutterstock.com/image-illustration/monochrome-abstract-noise-black-white-600nw-2462689935.jpg') repeat;
-            opacity: 0.05;
+        /* Particles container */
+        #particles-js {
+            position: fixed;
+            inset: 0;
             z-index: -1;
+            pointer-events: none;
         }
 
         header {
             position: fixed;
             top: 0;
             width: 100%;
-            padding: 30px 50px;
+            padding: 1.5rem 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            z-index: 10;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            background: rgba(18,18,18,0.4);
+            border-bottom: 1px solid rgba(187,134,252,0.15);
         }
 
-        .small-logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--text-light);
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 800;
+            letter-spacing: -1px;
         }
 
         nav ul {
             display: flex;
-            gap: 50px;
+            gap: 2.8rem;
             list-style: none;
         }
 
         nav a {
-            color: var(--text-light);
+            color: var(--text);
             text-decoration: none;
             font-weight: 500;
-            font-size: 1.1rem;
-            transition: color 0.3s ease;
+            transition: color 0.3s;
         }
 
         nav a:hover {
-            color: var(--accent-purple);
+            color: var(--accent);
         }
 
+        /* Hero */
         .hero {
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding: 0 50px;
+            padding: 0 5%;
             position: relative;
-            overflow: hidden;
         }
 
-        .hero-video {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            transform: translate(-50%, -50%);
-            z-index: -1;
-            object-fit: cover;
+        .hero h1 {
+            font-size: clamp(3.5rem, 8vw, 6.5rem);
+            font-weight: 900;
+            background: linear-gradient(90deg, #ffffff, #d4c2ff, #bb86fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% 200%;
+            animation: gradient 12s ease infinite;
+            margin-bottom: 1.5rem;
+            line-height: 0.95;
         }
 
-        .hero-overlay {
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: radial-gradient(circle at center, rgba(174, 110, 202, 0.4) 0%, rgba(18, 16, 18, 0.8) 100%);
-            z-index: -1;
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
-
-.hero h1 {
-    font-size: 5rem; /* Keep size or change to 6rem if you want bigger */
-    font-weight: 800;
-    margin-bottom: 30px;
-    background: linear-gradient(90deg, #ffffff, #efe9f3, #e4e1e9); /* Purple → Cyan → Purple glow */
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    background-size: 200% 200%;
-    animation: gradient-flow 8s ease infinite;
-    text-shadow: 0 0 30px rgba(239, 235, 244, 0.6); /* Stronger neural glow */
-}
-
-@keyframes gradient-flow {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-
-.hero h1 {
-  /* ... previous styles ... */
-  background-size: 200% 200%;
-  animation: gradient-shift 2s ease infinite;
-}
 
         .hero p {
-            font-size: 1.4rem;
-            max-width: 600px;
-            line-height: 1.8;
-            color: var(--text-secondary);
-            margin-bottom: 50px;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 20px;
+            font-size: 1.35rem;
+            max-width: 680px;
+            color: var(--text-sec);
+            margin-bottom: 3rem;
         }
 
         .btn {
-            padding: 15px 30px;
-            background: transparent;
-            border: 2px solid var(--accent-purple);
-            color: var(--accent-purple);
+            display: inline-block;
+            padding: 1rem 2.2rem;
+            border: 2px solid var(--accent);
+            color: var(--accent);
             text-decoration: none;
             border-radius: 50px;
             font-weight: 600;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
 
         .btn:hover {
-            background: var(--accent-purple);
-            color: var(--bg-dark);
-            transform: scale(1.05);
+            background: var(--accent);
+            color: #000;
+            transform: translateY(-4px);
+            box-shadow: 0 15px 35px rgba(187,134,252,0.25);
         }
 
         .btn-primary {
-            background: var(--accent-purple);
-            color: var(--bg-dark);
+            background: var(--accent);
+            color: #000;
+            border-color: transparent;
         }
 
         .btn-primary:hover {
             background: transparent;
-            color: var(--accent-purple);
+            color: var(--accent);
+            border-color: var(--accent);
         }
 
-        .scroll-btn {
-            position: absolute;
-            bottom: 50px;
-            left: 50px;
-            width: 60px;
-            height: 60px;
-            background: var(--text-light);
-            color: var(--bg-dark);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-
-        .scroll-btn:hover {
-            transform: scale(1.1);
-        }
-
-        /* Sections (unchanged) */
-        #about, #skills, #experience, #projects {
-            padding: 120px 50px;
+        /* Sections */
+        section {
+            padding: 140px 5%;
             max-width: 1400px;
             margin: 0 auto;
         }
 
-        #about h2, #skills h2, #experience h2, #projects h2 {
-            font-size: 3rem;
+        h2 {
+            font-size: 3.2rem;
             text-align: center;
-            margin-bottom: 80px;
-            color: var(--accent-purple);
-        }
-
-        .section-content {
-            background: rgba(30, 30, 30, 0.6);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 50px;
-            max-width: 1000px;
-            margin: 0 auto;
-            border: 1px solid rgba(187, 134, 252, 0.2);
-        }
-
-        .section-content ul {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .section-content li {
-            margin-bottom: 20px;
-            line-height: 1.6;
-            padding-left: 20px;
+            margin-bottom: 4rem;
+            color: var(--accent);
             position: relative;
         }
 
-        .section-content li::before {
-            content: '▹';
-            color: var(--accent-purple);
+        h2::after {
+            content: '';
             position: absolute;
-            left: 0;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
         }
 
-        .project-grid {
+        .about-content {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(30,30,30,0.5);
+            backdrop-filter: blur(12px);
+            padding: 3.5rem;
+            border-radius: 20px;
+            border: 1px solid rgba(187,134,252,0.18);
+        }
+
+        .about-content p {
+            font-size: 1.15rem;
+            color: var(--text-sec);
+            margin-bottom: 1.8rem;
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .skill-tag {
+            padding: 0.6rem 1.3rem;
+            background: rgba(187,134,252,0.12);
+            border: 1px solid rgba(187,134,252,0.3);
+            border-radius: 50px;
+            font-size: 0.95rem;
+            color: var(--accent);
+        }
+
+        /* Projects */
+        .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 50px;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 2.5rem;
         }
 
         .project-card {
-            background: rgba(30, 30, 30, 0.6);
-            backdrop-filter: blur(10px);
+            background: rgba(30,30,30,0.6);
+            backdrop-filter: blur(12px);
             border-radius: 20px;
-            padding: 40px;
-            text-align: center;
-            transition: transform 0.4s ease;
-            border: 1px solid rgba(187, 134, 252, 0.2);
+            padding: 2.5rem;
+            border: 1px solid rgba(187,134,252,0.15);
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
         .project-card:hover {
-            transform: translateY(-15px);
+            transform: translateY(-16px);
+            box-shadow: 0 25px 60px rgba(187,134,252,0.18);
+            border-color: var(--accent);
         }
 
         .project-card h3 {
-            font-size: 2rem;
-            margin-bottom: 20px;
-            color: var(--accent-purple);
+            font-size: 1.9rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
         }
 
         .project-card p {
-            color: var(--text-secondary);
-            margin-bottom: 30px;
-            line-height: 1.6;
+            color: var(--text-sec);
+            margin-bottom: 2rem;
         }
 
-        .project-card a {
-            color: var(--accent-purple);
+        .card-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-small {
+            padding: 0.7rem 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #000;
+            padding: 4rem 5% 2rem;
+            text-align: center;
+            color: #aaa;
+            border-top: 1px solid rgba(187,134,252,0.1);
+        }
+
+        footer a {
+            color: var(--accent);
             text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
         }
 
         /* Responsive */
-        @media (max-width: 1024px) {
-            .hero h1 { font-size: 3.5rem; }
-            .hero p { font-size: 1.2rem; }
-            nav ul { gap: 30px; }
-        }
-
         @media (max-width: 768px) {
-            header { padding: 20px; flex-direction: column; gap: 20px; }
-            .hero { padding: 0 30px; }
-            .hero h1 { font-size: 3rem; }
-            .scroll-btn { left: 30px; }
-            .cta-buttons { flex-direction: column; }
-            .project-grid { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 4.2rem; }
+            section { padding: 100px 5%; }
+            nav ul { gap: 1.5rem; font-size: 0.95rem; }
         }
-        #particles-js {
-        position: fixed; /* Changed from absolute to fixed */
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        z-index: -1; /* Behind all content */
-        pointer-events: none; /* Allows clicks to pass through to buttons/links */
-        }
-        #about, #skills, #experience, #projects, footer {
-        position: relative;
-        }
-
-        #about::before, #skills::before, #experience::before, #projects::before, footer::before {
-        content: '';
-        position: absolute;
-        top: 0; left: 0;
-        width: 100%; height: 100%;
-        background: rgba(18, 18, 18, 0.4); /* Dark overlay to tone down particles in sections */
-        z-index: -1;
-        }
-        .site-footer {
-  background: #000000;          /* dark professional navy */
-  color: #cbd5e1;
-  padding: 30px 15px;
-  text-align: center;
-  font-family: 'Segoe UI', Tahoma, sans-serif;
-}
-
-.footer-content {
-  max-width: 900px;
-  margin: auto;
-}
-
-.site-footer span {
-  color: #38bdf8;               /* accent color */
-  font-weight: 600;
-}
-
-.site-footer p {
-  margin: 6px 0;
-  font-size: 14px;
-  letter-spacing: 0.3px;
-}
-
-.site-footer a {
-  color: #38bdf8;
-  text-decoration: none;
-  font-weight: 500;
-}
-
-.site-footer a:hover {
-  text-decoration: underline;
-}
-
     </style>
 </head>
 <body>
-    <div id="particles-js"></div>
-    <header>
-        <div class="small-logo">anasrealm.</div>
-        <nav>
-            <ul>
-                <li><a href="#hero">Home</a></li>
-                <li><a href="#projects">Projects</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <section class="hero" id="hero">
-        <!-- Video Background - Replace src with your own MP4 URL (upload to Vercel /public or any host) -->
-        <video class="hero-video" autoplay muted loop playsinline>
-            <source src="bg.mp4" type="video/mp4">
-            Your browser does not support the video tag. (Fallback to static image if needed)
-        </video>
+<div id="particles-js"></div>
 
-        <div class="hero-overlay"></div>
+<header>
+    <div class="logo">anasrealm<span style="color:var(--accent)">.</span></div>
+    <nav>
+        <ul>
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+        </ul>
+    </nav>
+</header>
 
-        <h1>Shaik Anas Basha</h1>
-        <p>Hello there! I'm Anas, a passionate B.Tech Computer Science student specializing in AI, data science, full-stack development, and deep learning. Breathing life into ideas through code and innovation.</p>
+<section class="hero" id="hero" data-aos="fade-up">
+    <h1>Shaik Anas Basha</h1>
+    <p>AI Enthusiast • Full-Stack Developer • Deep Learning Explorer<br/>Turning ideas into interactive, performant, and beautiful digital experiences.</p>
 
-        <div class="cta-buttons">
-            <a href="#projects" class="btn btn-primary">View Projects</a>
+    <div style="display:flex; gap:1.5rem;">
+        <a href="#projects" class="btn btn-primary">Explore Projects</a>
+        <a href="mailto:shaikanas9346@gmail.com" class="btn">Get in Touch</a>
+    </div>
+</section>
+
+<section id="about" data-aos="fade-up" data-aos-delay="100">
+    <h2>About Me</h2>
+    <div class="about-content">
+        <p>Hey! I'm Anas, a B.Tech Computer Science student passionate about <strong>Artificial Intelligence</strong>, <strong>full-stack development</strong>, and creating tools that solve real problems.</p>
+        
+        <p>I love experimenting with modern web technologies, performance optimization, clean architecture, and building delightful user experiences — from neon-powered game platforms to smart utility tools.</p>
+
+        <div class="skills-list">
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">JavaScript / TypeScript</span>
+            <span class="skill-tag">React</span>
+            <span class="skill-tag">Next.js</span>
+            <span class="skill-tag">Node.js</span>
+            <span class="skill-tag">Spring Boot</span>
+            <span class="skill-tag">Deep Learning</span>
+            <span class="skill-tag">AI / ML</span>
+            <span class="skill-tag">Tailwind CSS</span>
+            <span class="skill-tag">UI/UX</span>
+        </div>
+    </div>
+</section>
+
+<section id="projects" data-aos="fade-up" data-aos-delay="200">
+    <h2>Featured Projects</h2>
+    <div class="projects-grid">
+        <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+            <h3>ToeTuff Gang (GNG)</h3>
+            <p>Neon-powered online browser gaming platform with free arcade, racing, and puzzle games.</p>
+            <div class="card-buttons">
+                <a href="https://toetuffgng.vercel.app/" target="_blank" class="btn btn-small">View Live</a>
+                <a href="#" class="btn btn-small" style="border-color:#555;color:#888;">GitHub</a>
+            </div>
         </div>
 
-        <div class="scroll-btn">→</div>
-    </section>
-
-    <!-- Rest of your sections (Projects) remain the same -->
-
-
-
-    <section id="projects">
-        <h2>Featured Projects</h2>
-        <div class="project-grid">
-            <div class="project-card">
-                <h3>ToeTuff Gang (GNG)</h3>
-                <p>Neon-powered online browser gaming platform with free arcade, racing, and puzzle games.</p>
-                <a href="https://toetuffgng.vercel.app/" target="_blank">Launch App →</a>
-            </div>
-            <div class="project-card">
-                <h3>TARK • Smart File Converter</h3>
-                <p>Intuitive drag-and-drop file conversion tool for seamless format switching.</p>
-                <a href="https://tark-converter-anas.vercel.app/" target="_blank">Open App →</a>
-            </div>
-            <div class="project-card">
-                <h3>Weather Application</h3>
-                <p>Full-stack React + Spring Boot real-time weather app with responsive design and API integration.</p>
-                <a href="https://shaikanasbasha-55.github.io/weather-application/" target="_blank">View Project →</a>
+        <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+            <h3>TARK • Smart File Converter</h3>
+            <p>Intuitive drag-and-drop file conversion tool supporting multiple formats seamlessly.</p>
+            <div class="card-buttons">
+                <a href="https://tark-converter-anas.vercel.app/" target="_blank" class="btn btn-small">View Live</a>
+                <a href="#" class="btn btn-small" style="border-color:#555;color:#888;">GitHub</a>
             </div>
         </div>
-    </section>
 
-<footer class="site-footer" id="contact">
-  <div class="footer-content">
-    <p class="copyright">
-      © 2025 <span>anasrealm</span>. All rights reserved.
+        <div class="project-card" data-aos="fade-up" data-aos-delay="300">
+            <h3>Weather Application</h3>
+            <p>Full-stack real-time weather app built with React + Spring Boot and clean API integration.</p>
+            <div class="card-buttons">
+                <a href="https://shaikanasbasha-55.github.io/weather-application/" target="_blank" class="btn btn-small">View Live</a>
+                <a href="#" class="btn btn-small" style="border-color:#555;color:#888;">GitHub</a>
+            </div>
+        </div>
+    </div>
+
+    <div style="text-align:center; margin-top:5rem;">
+        <p style="color:var(--text-sec); margin-bottom:1.5rem;">Want to see more?</p>
+        <a href="#" class="btn btn-primary">View All Projects →</a>
+    </div>
+</section>
+
+<footer>
+    <p>© 2026 <span style="color:var(--accent)">anasrealm</span>. Built with passion & neon vibes.</p>
+    <p style="margin-top:0.8rem;">
+        <a href="mailto:shaikanas9346@gmail.com">shaikanas9346@gmail.com</a>
     </p>
-    <p class="tagline">
-      Built with passion & clean code
-    </p>
-    <p class="contact">
-      Contact:
-      <a href="mailto:shaikanas9346@gmail.com">shaikanas9346@gmail.com</a>
-    </p>
-  </div>
 </footer>
 
 <script>
+// Particles config (slightly optimized)
 particlesJS("particles-js", {
-  "particles": {
-    "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
-    "color": { "value": "#bb86fc" },
-    "shape": { "type": "circle" },
-    "opacity": { "value": 0.5, "random": true },
-    "size": { "value": 4, "random": true },
-    "line_linked": {
-      "enable": true,
-      "distance": 150,
-      "color": "#bb86fc",
-      "opacity": 0.4,
-      "width": 1
+    "particles": {
+        "number": { "value": 60, "density": { "enable": true, "value_area": 900 } },
+        "color": { "value": "#bb86fc" },
+        "shape": { "type": "circle" },
+        "opacity": { "value": 0.45, "random": true },
+        "size": { "value": 3.5, "random": true },
+        "line_linked": { "enable": true, "distance": 140, "color": "#bb86fc", "opacity": 0.35, "width": 1 },
+        "move": { "enable": true, "speed": 3.5, "direction": "none", "random": true, "straight": false, "out_mode": "out" }
     },
-    "move": {
-      "enable": true,
-      "speed": 4, /* Base movement speed */
-      "direction": "none",
-      "random": false,
-      "straight": false,
-      "out_mode": "out",
-      "attract": {
-        "enable": true,
-        "rotateX": 300, /* Lower = stronger horizontal pull */
-        "rotateY": 600  /* Lower = stronger vertical pull */
-      }
-    }
-  },
-  "interactivity": {
-    "detect_on": "window", /* Changed to "window" – fixes mouse detection issues! */
-    "events": {
-      "onhover": { "enable": true, "mode": "grab" },
-      "onclick": { "enable": true, "mode": "repulse" },
-      "resize": true
+    "interactivity": {
+        "detect_on": "window",
+        "events": { "onhover": { "enable": true, "mode": "grab" }, "onclick": { "enable": true, "mode": "repulse" }, "resize": true },
+        "modes": { "grab": { "distance": 130, "line_linked": { "opacity": 0.8 } }, "repulse": { "distance": 180 } }
     },
-    "modes": {
-      "grab": { "distance": 140, "line_linked": { "opacity": 1 } },
-      "repulse": { "distance": 200, "duration": 0.4 }
-    }
-  },
-  "retina_detect": true
+    "retina_detect": true
 });
-</script>
-<script>
-  // Smooth scroll for the arrow button
-  document.querySelector('.scroll-btn').addEventListener('click', function() {
-    window.scrollBy({
-      top: window.innerHeight, /* Scrolls down one full screen */
-      behavior: 'smooth'
-    });
-  });
 
-  // Optional: Make it hover glow
-  document.querySelector('.scroll-btn').addEventListener('mouseenter', function() {
-    this.style.transform = 'scale(1.2)';
-  });
-  document.querySelector('.scroll-btn').addEventListener('mouseleave', function() {
-    this.style.transform = 'scale(1)';
-  });
+// Initialize AOS
+AOS.init({
+    duration: 1000,
+    once: true,
+    easing: 'ease-out-cubic'
+});
 </script>
 </body>
 </html>
